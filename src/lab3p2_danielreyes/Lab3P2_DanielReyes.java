@@ -254,7 +254,45 @@ public class Lab3P2_DanielReyes {
                     }
             }
         }else{
-            
+            System.out.println("1- Carro \n2- Camión de carga\n3- Bus\n Ingrese una opción: ");
+            int respuesta = leer.nextInt();
+            switch(respuesta){
+                case 1:{
+                    System.out.println("Cantidad de puertas: ");
+                    int puerta = leer.nextInt();
+                    System.out.println("Descripción de motor: ");
+                    String descr = leer.next();
+                    descr = leer.nextLine();
+                    System.out.println("Velocidad máxima del carro: ");
+                    int velo = leer.nextInt();
+                    Carro carro;
+                    carro = new Carro(puerta, descr, velo, color, modelo, marca,fecha, precio, llanta);
+                    vehiculo.add(carro);
+                    return carro;
+                }
+                case 2:{
+                    boolean r = false;
+                    System.out.println("Volumen máximo de carga: ");
+                    int vol= leer.nextInt();
+                    System.out.println("Altura del camión: {metros}");
+                    int altu = leer.nextInt();
+                    System.out.println("Contiene reotroexcavadora: \n1-Si\n2-No\nIngrese una opción: ");
+                    int opci = leer.nextInt();
+                    if(opci == 1){
+                        r = true;
+                    }else{
+                        r = false;
+                    }
+                    Camion camion;
+                    camion = new Camion(vol,altu, r, color, modelo, marca,fecha, precio, llanta);
+                    vehiculo.add(camion);
+                    return camion;
+                }
+                    
+                case 3:
+                    break;
+                    
+            }
         }
         
         return new Vehiculo();
