@@ -73,10 +73,77 @@ public class Lab3P2_DanielReyes {
                     }while(resp != 4);
                     }break;
                 case 2:{
-                    
+                    int resp;
+                    do{
+                        System.out.println("--------CRUD Clientes---------");
+                        System.out.println("1- Agregar Cliente");
+                        System.out.println("2- Eliminar Cliente");
+                        System.out.println("3- Menu");
+                        System.out.println("Ingrese una opción: ");
+                        resp = leer.nextInt();
+                        
+                        switch(resp){
+                            case 1:
+                                crearCliente();
+                                System.out.println("Se ha agregado exitosamente");
+                                break;
+                            case 2:
+                                System.out.println("----Eliminar------");
+                                for (Object cl : cliente) {
+                                    if(cl instanceof Cliente){
+                                        System.out.println(""+cliente.indexOf(cl)+"- "+cliente);
+                                    }
+                                }
+                                System.out.println("Ingrese una opción para eliminar cliente: ");
+                                int answer= leer.nextInt();
+                                cliente.remove(answer);
+                                break;
+                        }
+                    }while(resp != 3);
                     }break;
                 case 3:{
-                    
+                    int resp;
+                    do{
+                        System.out.println("--------CRUD Vehiculo---------");
+                        System.out.println("1- Agregar concesionaria");
+                        System.out.println("2- Modificar concesionaria");
+                        System.out.println("3- Eliminar concesionaria");
+                        System.out.println("4- Menu");
+                        System.out.println("Ingrese una opción: ");
+                        resp = leer.nextInt();
+                        
+                        switch(resp){
+                            case 1:
+                                crearC();
+                                System.out.println("Se ha agregado exitosamente");
+                                break;
+                            case 2:
+                                System.out.println("----Modificar------");
+                                for (Object c : empresa) {
+                                    if(c instanceof Concesionaria){
+                                        System.out.println(""+empresa.indexOf(c)+"- "+empresa);
+                                    }
+                                }
+                                System.out.println("Ingrese una opción para modificar la dirección: ");
+                                int respuesta = leer.nextInt();
+                                System.out.println("Ingrese una nueva dirección: ");
+                                String dire = leer.nextLine();
+                                dire = leer.nextLine();
+                                empresa.get(respuesta).setDireccion(dire);
+                                break;
+                            case 3:
+                                System.out.println("----Eliminar------");
+                                for (Object c : empresa) {
+                                    if(c instanceof Concesionaria){
+                                        System.out.println(""+empresa.indexOf(c)+"- "+empresa);
+                                    }
+                                }
+                                System.out.println("Ingrese una opción para eliminar concesionaria: ");
+                                int answer= leer.nextInt();
+                                empresa.remove(answer);
+                                break;
+                        }
+                    }while(resp != 4);
                     }break;
                 case 4:{
                     
@@ -100,5 +167,18 @@ public class Lab3P2_DanielReyes {
         temp = new Concesionaria(name, id, direccion, saldo);
         empresa.add(temp);
         return temp;
+    }
+    static Cliente crearCliente(){
+        int id = cliente.size()+1;
+        System.out.println("Nombre del cliente: ");
+        String nom = leer.nextLine();
+        nom = leer.next();
+        System.out.println("Dinero del cliente: ");
+        double dinero = leer.nextDouble();
+        Cliente nuevo;
+        nuevo = new Cliente(id,nom,dinero);
+        cliente.add(nuevo);
+        return nuevo;
+                
     }
 }
