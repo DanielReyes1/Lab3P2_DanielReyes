@@ -132,7 +132,7 @@ public class Lab3P2_DanielReyes {
                                 break;
                             case 3:
                                 System.out.println("----Eliminar------");
-                                for (Object v : empresa) {
+                                for (Object v : vehiculo) {
                                     if(v instanceof Vehiculo){
                                         System.out.println(""+vehiculo.indexOf(v)+"- "+vehiculo);
                                     }
@@ -149,6 +149,42 @@ public class Lab3P2_DanielReyes {
                     }
                     
                 case 4:{
+                    System.out.println("Compra y Venta");
+                    System.out.println("Quien esta comprando: \n1- Concension     \n2- Cliente");
+                    int respuesta = leer.nextInt();
+                    if(respuesta == 1){
+                        for (Object c : empresa) {
+                                    if(c instanceof Concesionaria){
+                                        System.out.println(""+empresa.indexOf(c)+"- "+empresa);
+                                    }
+                                }
+                        System.out.println("Ingrese su concesion: ");
+                        int consencion = leer.nextInt();
+                        for (Vehiculo v : vehiculo) {
+                            if(v instanceof Vehiculo){
+                                System.out.println(""+vehiculo.indexOf(v)+"- "+vehiculo);
+                            }
+                        }
+                        System.out.println("Cual vehiculo desea comprar: ");
+                        int veh = leer.nextInt();
+                        
+                    }else if(respuesta == 2){
+                        for (Object cl : cliente) {
+                                    if(cl instanceof Cliente){
+                                        System.out.println(""+cliente.indexOf(cl)+"- "+cliente);
+                                    }
+                                }
+                        System.out.println("Ingrese su cuenta: ");
+                        int cuenta = leer.nextInt();
+                        for (Vehiculo v : vehiculo) {
+                            if(v instanceof Vehiculo){
+                                System.out.println(""+vehiculo.indexOf(v)+"- "+vehiculo);
+                            }
+                        }
+                        System.out.println("Cual vehiculo desea comprar: ");
+                        int veh = leer.nextInt();
+                    }
+                    
                     
                     }break;
             }
