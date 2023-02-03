@@ -102,7 +102,8 @@ public class Lab3P2_DanielReyes {
                     }while(resp != 3);
                     }break;
                 case 3:{
-                    int resp;
+                    if(!empresa.isEmpty()){
+                        int resp;
                     do{
                         System.out.println("--------CRUD Vehiculo---------");
                         System.out.println("1- Agregar vehiculo");
@@ -142,7 +143,11 @@ public class Lab3P2_DanielReyes {
                                 break;
                         }
                     }while(resp != 4);
+                    }else{
+                        System.out.println("Ocupa minimo una concesionaria");
                     }break;
+                    }
+                    
                 case 4:{
                     
                     }break;
@@ -157,8 +162,8 @@ public class Lab3P2_DanielReyes {
         name = leer.nextLine();
         int id = empresa.size()+1;
         System.out.println("Dirección de la empresa: ");
-        String direccion = leer.nextLine();
-        direccion = leer.next();
+        String direccion = leer.next();
+        direccion = leer.nextLine();
         System.out.println("Saldo disponible: ");
         int saldo = leer.nextInt();
         Concesionaria temp;
@@ -229,8 +234,27 @@ public class Lab3P2_DanielReyes {
                     return moto;
                     }
                 case 2:{
-                    }break;
+                    boolean t = false;
+                    System.out.println("Descripción de la bicicleta: ");
+                    String descr = leer.nextLine();
+                    descr = leer.nextLine();
+                    System.out.println("Radio de rueda: ");
+                    int radio = leer.nextInt();
+                    System.out.println("Tipo de la bicicleta: \n1- BMX \n2- De calle ");
+                    int tipo = leer.nextInt();
+                    if(tipo == 1){
+                        t = true;
+                    }else{
+                        t = false;
+                    }
+                    Bicicleta bici;
+                    bici = new Bicicleta(descr, radio, t, color, modelo, marca, fecha,precio, llanta);
+                    vehiculo.add(bici);
+                    return bici;
+                    }
             }
+        }else{
+            
         }
         
         return new Vehiculo();
