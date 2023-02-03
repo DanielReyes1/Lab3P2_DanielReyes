@@ -289,8 +289,17 @@ public class Lab3P2_DanielReyes {
                     return camion;
                 }
                     
-                case 3:
-                    break;
+                case 3: {
+                    System.out.println("Cantidad de pasajeros: ");
+                    int pasajero = leer.nextInt();
+                    String t = "";
+                    Bus bus;
+                    bus = new Bus(pasajero, t, color, modelo, marca, fecha, precio, llanta);
+                    vehiculo.add(bus);
+                    return bus;
+                    
+                }
+                    
                     
             }
         }

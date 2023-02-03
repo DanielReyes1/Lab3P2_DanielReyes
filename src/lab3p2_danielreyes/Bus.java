@@ -15,6 +15,11 @@ public class Bus extends Vehiculo{
         super(color, modelo, marca, fecha, precio, llanta);
         this.pasajeros = pasajeros;
         this.tipo = tipo;
+        if(pasajeros > 50){
+            this.tipo = "De ruta";
+        }else{
+            this.tipo = "Rapidito";
+        }
     }
 
     public int getPasajeros() {
