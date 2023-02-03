@@ -40,8 +40,17 @@ public class Lab3P2_DanielReyes {
                         
                         switch(resp){
                             case 1:
+                                crearC();
+                                System.out.println("Se ha agregado exitosamente");
                                 break;
                             case 2:
+                                System.out.println("----Modificar------");
+                                for (Object c : empresa) {
+                                    if(c instanceof Concesionaria){
+                                        System.out.println(""+empresa.indexOf(c)+"- "+empresa);
+                                    }
+                                }
+                                System.out.println("");
                                 break;
                             case 3:
                                 break;
@@ -66,7 +75,6 @@ public class Lab3P2_DanielReyes {
         System.out.println("Ingrese el nombre de la empresa: ");
         String name = leer.nextLine();
         name = leer.nextLine();
-        System.out.println("Ingrese el id de la empresa: ");
         int id = empresa.size()+1;
         System.out.println("Dirección de la empresa: ");
         String direccion = leer.nextLine();
