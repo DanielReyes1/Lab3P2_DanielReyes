@@ -69,7 +69,11 @@ public class Vehiculo {
     }
 
     public void setLlanta(int llanta) {
+        if(llanta == 4 && llanta == 2){
         this.llanta = llanta;
+        }else{
+            this.llanta = 7;
+        }
     }
 
     @Override

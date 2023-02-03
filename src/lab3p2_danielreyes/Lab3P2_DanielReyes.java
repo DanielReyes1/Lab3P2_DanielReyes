@@ -105,42 +105,40 @@ public class Lab3P2_DanielReyes {
                     int resp;
                     do{
                         System.out.println("--------CRUD Vehiculo---------");
-                        System.out.println("1- Agregar concesionaria");
-                        System.out.println("2- Modificar concesionaria");
-                        System.out.println("3- Eliminar concesionaria");
+                        System.out.println("1- Agregar vehiculo");
+                        System.out.println("2- Modificar vehiculo");
+                        System.out.println("3- Eliminar vehiculo");
                         System.out.println("4- Menu");
                         System.out.println("Ingrese una opción: ");
                         resp = leer.nextInt();
                         
                         switch(resp){
                             case 1:
-                                crearC();
+                                crearV();
                                 System.out.println("Se ha agregado exitosamente");
                                 break;
                             case 2:
                                 System.out.println("----Modificar------");
-                                for (Object c : empresa) {
-                                    if(c instanceof Concesionaria){
-                                        System.out.println(""+empresa.indexOf(c)+"- "+empresa);
+                                for (Object v : vehiculo) {
+                                    if(v instanceof Vehiculo){
+                                        System.out.println(""+vehiculo.indexOf(v)+"- "+vehiculo);
                                     }
                                 }
-                                System.out.println("Ingrese una opción para modificar la dirección: ");
+                                System.out.println("Ingrese una opción para modificar: ");
                                 int respuesta = leer.nextInt();
-                                System.out.println("Ingrese una nueva dirección: ");
-                                String dire = leer.nextLine();
-                                dire = leer.nextLine();
-                                empresa.get(respuesta).setDireccion(dire);
+                                vehiculo.remove(respuesta);
+                                vehiculo.add(crearV());
                                 break;
                             case 3:
                                 System.out.println("----Eliminar------");
-                                for (Object c : empresa) {
-                                    if(c instanceof Concesionaria){
-                                        System.out.println(""+empresa.indexOf(c)+"- "+empresa);
+                                for (Object v : empresa) {
+                                    if(v instanceof Vehiculo){
+                                        System.out.println(""+vehiculo.indexOf(v)+"- "+vehiculo);
                                     }
                                 }
-                                System.out.println("Ingrese una opción para eliminar concesionaria: ");
+                                System.out.println("Ingrese una opción para eliminar vehiculo: ");
                                 int answer= leer.nextInt();
-                                empresa.remove(answer);
+                                vehiculo.remove(answer);
                                 break;
                         }
                     }while(resp != 4);
@@ -181,4 +179,61 @@ public class Lab3P2_DanielReyes {
         return nuevo;
                 
     }
+    static Vehiculo crearV(){
+        System.out.println("Ingrese un color: ");
+        String color = leer.nextLine();
+        color = leer.next();
+        System.out.println("Ingrese un modelo: ");
+        String modelo = leer.nextLine();
+        modelo = leer.next();
+        System.out.println("Ingrese una marca: ");
+        String marca = leer.nextLine();
+        marca = leer.next();
+        System.out.println("Ingrese un año: ");
+        int fecha = leer.nextInt();
+        System.out.println("Precio del vehiculo: ");
+        double precio = leer.nextDouble();
+        System.out.println("Llantas del vehiculo: ");
+        int llanta = leer.nextInt();
+        
+
+        boolean b = false;
+        do{
+            if(llanta == 2 || llanta == 4){
+                b = true;
+            }else{
+                System.out.println("Llantas del vehiculo: ");
+                llanta = leer.nextInt();
+                b = false;
+            }
+        }while(b != true);
+        
+        if(llanta == 2){
+            System.out.println("1- Motocicleta \n2- Bicicleta \n Ingrese un número: ");
+            int op = leer.nextInt();
+            switch(op){
+                case 1:{
+                    boolean e = false;
+                    System.out.println("Desplazamiento de su motor: ");
+                    int desp = leer.nextInt();
+                    System.out.println("Es eléctrica\n 1- Si \n2- No");
+                    int electrica = leer.nextInt();
+                    if (electrica == 1){
+                        e = true;
+                    }else{
+                        e = false;
+                    }
+                    Moticicleta moto;
+                    moto = new Moticicleta(desp, e, color, modelo, marca, fecha, precio, llanta);
+                    vehiculo.add(moto);
+                    return moto;
+                    }
+                case 2:{
+                    }break;
+            }
+        }
+        
+        return new Vehiculo();
+    }
+    
 }
