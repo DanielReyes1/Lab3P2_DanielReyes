@@ -23,6 +23,7 @@ public class Lab3P2_DanielReyes {
             System.out.println("2- CRUD Clientes");
             System.out.println("3- CRUD Vehículos");
             System.out.println("4- Compra/Venta");
+            System.out.println("5- Salir");
             System.out.println("Eliga una opción: ");
             opcion = leer.nextInt();
             
@@ -50,9 +51,23 @@ public class Lab3P2_DanielReyes {
                                         System.out.println(""+empresa.indexOf(c)+"- "+empresa);
                                     }
                                 }
-                                System.out.println("");
+                                System.out.println("Ingrese una opción para modificar la dirección: ");
+                                int respuesta = leer.nextInt();
+                                System.out.println("Ingrese una nueva dirección: ");
+                                String dire = leer.nextLine();
+                                dire = leer.nextLine();
+                                empresa.get(respuesta).setDireccion(dire);
                                 break;
                             case 3:
+                                System.out.println("----Eliminar------");
+                                for (Object c : empresa) {
+                                    if(c instanceof Concesionaria){
+                                        System.out.println(""+empresa.indexOf(c)+"- "+empresa);
+                                    }
+                                }
+                                System.out.println("Ingrese una opción para eliminar concesionaria: ");
+                                int answer= leer.nextInt();
+                                empresa.remove(answer);
                                 break;
                         }
                     }while(resp != 4);
@@ -78,7 +93,7 @@ public class Lab3P2_DanielReyes {
         int id = empresa.size()+1;
         System.out.println("Dirección de la empresa: ");
         String direccion = leer.nextLine();
-        direccion = leer.nextLine();
+        direccion = leer.next();
         System.out.println("Saldo disponible: ");
         int saldo = leer.nextInt();
         Concesionaria temp;
