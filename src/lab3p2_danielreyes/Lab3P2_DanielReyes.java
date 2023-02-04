@@ -149,6 +149,9 @@ public class Lab3P2_DanielReyes {
                     }
                     
                 case 4:{
+                    
+                    
+                    
                     System.out.println("Compra y Venta");
                     System.out.println("Quien esta comprando: \n1- Concension     \n2- Cliente");
                     int respuesta = leer.nextInt();
@@ -167,6 +170,14 @@ public class Lab3P2_DanielReyes {
                         }
                         System.out.println("Cual vehiculo desea comprar: ");
                         int veh = leer.nextInt();
+                        if( ((Concesionaria)empresa.get(consencion)).getSaldo() >= vehiculo.get(veh).getPrecio()  ){
+                            ((Concesionaria)empresa.get(consencion)).getAuto().add(vehiculo.get(veh));
+                            double temporal=((Concesionaria)empresa.get(consencion)).getSaldo();
+                            double temporal2 = ((Vehiculo)vehiculo.get(veh)).getPrecio();
+                            double temporal3 = temporal-temporal2;
+                            ((Concesionaria)empresa.get(consencion)).setSaldo(temporal3);
+                            System.out.println("COMPRA EXITOSA");
+                        }
                         
                     }else if(respuesta == 2){
                         for (Object cl : cliente) {
@@ -183,6 +194,17 @@ public class Lab3P2_DanielReyes {
                         }
                         System.out.println("Cual vehiculo desea comprar: ");
                         int veh = leer.nextInt();
+                        if( ((Cliente)cliente.get(cuenta)).getSaldo() >= vehiculo.get(veh) .getPrecio()   ){
+                            ((Cliente)cliente.get(cuenta)).getVehiculo().add(vehiculo.get(veh));
+                            double temporal= ((Cliente)cliente.get(cuenta)).getSaldo();
+                            double temporal2 = ((Vehiculo)vehiculo.get(veh)).getPrecio();
+                            double temporal3 = temporal - temporal2;
+                            ((Cliente)cliente.get(cuenta)).setSaldo(temporal3);
+                            
+                            System.out.println("COMPRA EXITOSA");
+                        }else{
+                            System.out.println("Saldo insuficiente");
+                        }
                     }
                     
                     
@@ -210,8 +232,8 @@ public class Lab3P2_DanielReyes {
     static Cliente crearCliente(){
         int id = cliente.size()+1;
         System.out.println("Nombre del cliente: ");
-        String nom = leer.nextLine();
-        nom = leer.next();
+        String nom = leer.next();
+        nom = leer.nextLine();
         System.out.println("Dinero del cliente: ");
         double dinero = leer.nextDouble();
         Cliente nuevo;
@@ -220,6 +242,7 @@ public class Lab3P2_DanielReyes {
         return nuevo;
                 
     }
+    
     static Vehiculo crearV(){
         System.out.println("Ingrese un color: ");
         String color = leer.nextLine();
@@ -228,8 +251,8 @@ public class Lab3P2_DanielReyes {
         String modelo = leer.nextLine();
         modelo = leer.next();
         System.out.println("Ingrese una marca: ");
-        String marca = leer.nextLine();
-        marca = leer.next();
+        String marca = leer.next();
+        marca = leer.nextLine();
         System.out.println("Ingrese un año: ");
         int fecha = leer.nextInt();
         System.out.println("Precio del vehiculo: ");
@@ -266,13 +289,21 @@ public class Lab3P2_DanielReyes {
                     }
                     Moticicleta moto;
                     moto = new Moticicleta(desp, e, color, modelo, marca, fecha, precio, llanta);
+                    for (Object c : empresa) {
+                                    if(c instanceof Concesionaria){
+                                        System.out.println(""+empresa.indexOf(c)+"- "+empresa);
+                                    }
+                    }
+                    System.out.println("Cual concension desea ingresar el carro: ");
+                    int pos = leer.nextInt();
                     vehiculo.add(moto);
+                    empresa.get(pos).getAuto().add(moto);
                     return moto;
                     }
                 case 2:{
                     boolean t = false;
                     System.out.println("Descripción de la bicicleta: ");
-                    String descr = leer.nextLine();
+                    String descr = leer.next();
                     descr = leer.nextLine();
                     System.out.println("Radio de rueda: ");
                     int radio = leer.nextInt();
@@ -286,6 +317,14 @@ public class Lab3P2_DanielReyes {
                     Bicicleta bici;
                     bici = new Bicicleta(descr, radio, t, color, modelo, marca, fecha,precio, llanta);
                     vehiculo.add(bici);
+                    for (Object c : empresa) {
+                                    if(c instanceof Concesionaria){
+                                        System.out.println(""+empresa.indexOf(c)+"- "+empresa);
+                                    }
+                    }
+                    System.out.println("Cual concension desea ingresar el carro: ");
+                    int pos = leer.nextInt();
+                    empresa.get(pos).getAuto().add(bici);
                     return bici;
                     }
             }
@@ -304,6 +343,14 @@ public class Lab3P2_DanielReyes {
                     Carro carro;
                     carro = new Carro(puerta, descr, velo, color, modelo, marca,fecha, precio, llanta);
                     vehiculo.add(carro);
+                    for (Object c : empresa) {
+                                    if(c instanceof Concesionaria){
+                                        System.out.println(""+empresa.indexOf(c)+"- "+empresa);
+                                    }
+                    }
+                    System.out.println("Cual concension desea ingresar el carro: ");
+                    int pos = leer.nextInt();
+                    empresa.get(pos).getAuto().add(carro);
                     return carro;
                 }
                 case 2:{
@@ -322,6 +369,14 @@ public class Lab3P2_DanielReyes {
                     Camion camion;
                     camion = new Camion(vol,altu, r, color, modelo, marca,fecha, precio, llanta);
                     vehiculo.add(camion);
+                    for (Object c : empresa) {
+                                    if(c instanceof Concesionaria){
+                                        System.out.println(""+empresa.indexOf(c)+"- "+empresa);
+                                    }
+                    }
+                    System.out.println("Cual concension desea ingresar el carro: ");
+                    int pos = leer.nextInt();
+                    empresa.get(pos).getAuto().add(camion);
                     return camion;
                 }
                     
@@ -332,6 +387,14 @@ public class Lab3P2_DanielReyes {
                     Bus bus;
                     bus = new Bus(pasajero, t, color, modelo, marca, fecha, precio, llanta);
                     vehiculo.add(bus);
+                    for (Object c : empresa) {
+                                    if(c instanceof Concesionaria){
+                                        System.out.println(""+empresa.indexOf(c)+"- "+empresa);
+                                    }
+                    }
+                    System.out.println("Cual concension desea ingresar el carro: ");
+                    int pos = leer.nextInt();
+                    empresa.get(pos).getAuto().add(bus);
                     return bus;
                     
                 }
